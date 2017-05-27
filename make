@@ -2,8 +2,6 @@
 
 'use strict';
 
-global.library = require('./package.json').name;
-
 const build = require('./tasks/build');
 const	eslint = require('./tasks/eslint');
 const	minify = require('./tasks/minify');

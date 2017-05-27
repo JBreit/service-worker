@@ -1,11 +1,8 @@
-var utils = require('./utils')
+const { exec, extend, optionsToArray } = require('./utils');
 
-module.exports = function(options) {
-
-  options = utils.extend({
-    port: 3000
-  }, options)
-  // serve the contents of this folder
-  return utils.exec('./node_modules/.bin/serve', utils.optionsToArray(options))
-
-}
+module.exports = (options) => {
+  options = extend({
+    port: 3000,
+  }, options);
+  return exec('./node_modules/.bin/serve', optionsToArray(options));
+};

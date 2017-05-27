@@ -13,5 +13,5 @@
 })(this, function () {
   'use strict';
 
-  console.log('test');
+  document.write('test');
 });

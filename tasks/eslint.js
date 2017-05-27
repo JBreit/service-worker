@@ -1,17 +1,12 @@
-var utils = require('./utils')
+const { exec, extend } = require('./utils');
 
-module.exports = function(options) {
-
-  options = utils.extend({
-    // Folders containing the files we need to check
+module.exports = (options) => {
+  options = extend({
     folders: [
       'tasks',
       'src',
-      'test'
-    ]
-  }, options)
-
-  // Run eslint
-  return utils.exec('./node_modules/.bin/eslint', options.folders)
-
-}
+      'test',
+    ],
+  }, options);
+  return exec('./node_modules/.bin/eslint', options.folders);
+};

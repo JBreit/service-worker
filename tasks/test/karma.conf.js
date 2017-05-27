@@ -1,14 +1,10 @@
-module.exports = function(config) {
+const saucelabsBrowsers = require('./saucelabs-browsers').browsers;
 
-  var saucelabsBrowsers = require('./saucelabs-browsers.json').browsers,
-    browsers = ['PhantomJS']
-
-  // run the tests only on the saucelabs browsers
+module.exports = (config) => {
+  const browsers = ['PhantomJS'];
   if (process.env.SAUCELABS === 'true') {
-    browsers = Object.keys(saucelabsBrowsers)
+    browsers = Object.keys(saucelabsBrowsers);
   }
-
-  // karma configuration
   // http://karma-runner.github.io/0.12/config/configuration-file.html
   config.set({
     basePath: '../../',
@@ -16,7 +12,7 @@ module.exports = function(config) {
     frameworks: ['mocha'],
     sauceLabs: {
       build: process.env.TRAVIS_JOB_ID,
-      testName: process.env.LIBRARY_NAME
+      testName: process.env.LIBRARY_NAME,
     },
     browserNoActivityTimeout: 120000,
     concurrency: 2,
@@ -27,23 +23,23 @@ module.exports = function(config) {
       'node_modules/sinon-chai/lib/sinon-chai.js',
       `dist/${process.env.LIBRARY_NAME}.js`,
       'test/specs/*.js',
-      'test/runner.js'
+      'test/runner.js',
     ],
-    browsers: browsers,
+    browsers,
     reporters: ['progress', 'saucelabs', 'coverage'],
     preprocessors: {
       '../dist/*': ['coverage'],
-      'test/**/*.js': ['babel']
+      'test/**/*.js': ['babel'],
     },
-    'babelPreprocessor': {
+    babelPreprocessor: {
       options: {
         presets: ['es2015'],
-        sourceMap: 'inline'
-      }
+        sourceMap: 'inline',
+      },
     },
     coverageReporter: {
-      dir: './coverage/'
+      dir: './coverage/',
     },
-    singleRun: true
-  })
-}
+    singleRun: true,
+  });
+};
