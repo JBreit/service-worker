@@ -19,6 +19,7 @@ const cached = preCache(APPLICATION_CACHE);
 addEventListener('install', (event) => {
   event.waitUntil(cached.then(() => { (self).skipWaiting(); }));
 });
+
 addEventListener('fetch', (event) => {
   event.respondWith(caches.match(event.request)
     .then((response) => {
@@ -29,6 +30,7 @@ addEventListener('fetch', (event) => {
     })
   )
 });
+
 addEventListener('activate', (event) => {
   const CACHE_WHITE_LIST = [APPLICATION_CACHE];
   event.waitUntil(caches.keys().then((cacheNames) => {

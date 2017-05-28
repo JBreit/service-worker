@@ -1,4 +1,5 @@
 lib-cov
+js
 index.js
 *.seed
 *.log

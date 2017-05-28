@@ -13,6 +13,10 @@
 })(this, function () {
   'use strict';
 
+  var width = document.body.clientWidth;
+  var height = document.body.clientHeight;
+  document.write('width: ' + width);
+  document.write('height: ' + height);
   if ('serviceWorker' in navigator && "SyncManager" in window) {
     addEventListener('load', function (event) {
       navigator.serviceWorker.register('service-worker.js', { scope: '/' });

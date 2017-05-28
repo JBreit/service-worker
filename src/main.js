@@ -1,5 +1,11 @@
 /* global window*/
 
+let width = document.body.clientWidth;
+let height = document.body.clientHeight;
+
+document.write(`width: ${width}`);
+document.write(`height: ${height}`);
+
 if ('serviceWorker' in navigator && "SyncManager" in window) {
   addEventListener('load', (event) => {
     navigator.serviceWorker.register('service-worker.js', { scope: '/' });
