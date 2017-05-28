@@ -13,5 +13,16 @@
 })(this, function () {
   'use strict';
 
-  document.write('test');
+  if ('serviceWorker' in navigator && "SyncManager" in window) {
+    addEventListener('load', function (event) {
+      navigator.serviceWorker.register('service-worker.js', { scope: '/' });
+      navigator.serviceWorker.ready.then(function (registration) {
+        console.info('> [ServiceWorker] registration successful with scope: ', registration.scope);
+      }).catch(function (err) {
+        console.info('> [ServiceWorker] registration failed: ', err);
+      });
+    });
+  } else {
+    console.log(event);
+  }
 });

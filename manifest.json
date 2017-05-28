@@ -1,0 +1,25 @@
+{
+    "name": "jbreit.github.io",
+    "version": "0.0.1",
+    "short_name": "jbreit.io",
+    "default_locale": "en",
+    "author": "Jason Breitigan",
+    "developer": {
+        "name": "Jason Breitigan",
+        "email": "<jason.breitigan@gmail.com>",
+        "url": "http://www.innermindco.com/"
+    },
+    "scope": "/",
+    "icons": [{
+        "src": "/images/favicon.png",
+        "sizes": "32x32",
+        "type": "image/x-icon"
+    }],
+    "display": "standalone",
+    "start_url": "/",
+    "serviceworker": {
+        "src": "service-worker.js",
+        "scope": "/",
+        "use_cache": true
+    }
+}
