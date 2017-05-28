@@ -9,7 +9,7 @@
     "serve": "node make serve",
     "eslint": "node make eslint",
     "build": "node make build",
-    "build:service-worker": "rollup ./src/service-worker.js --format umd --name \"service-worker\" --output ./service-worker.js",
+    "build:service-worker": "babel ./src/service-worker.js --out-file ./service-worker.js --plugins=transform-es2015-modules-umd",
     "watch": "node make watch",
     "minify": "./node_modules/.bin/uglifyjs ./dist/jbreit.github.io.js -c -m --mangle-props -o ./dist/jbreit.github.io.min.js",
     "saucelabs": "node make saucelabs",
